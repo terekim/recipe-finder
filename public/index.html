@@ -109,13 +109,19 @@
   </fb:login-button>
  -->
 
-    <div class="splash" id="bg" alt="">
+    <div class="page" id="splash" alt="">
+      <div id="status">
+        <!---->
+
+        <fb:login-button size="xlarge" scope="public_profile" onlogin="checkLoginState();">Login with Facebook</fb:login-button>
+      </div>
     </div>
 
-    <div id="status">
-      <!---->
+    
 
-      <fb:login-button size="xlarge" onlogin="checkLoginState();">Login with Facebook</fb:login-button>
+    <div class="page" id="search">
+      <div class="sidebar"></div>
+      <div class="content"></div>
     </div>
     
   </body>

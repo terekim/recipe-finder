@@ -1,4 +1,4 @@
-html {
+#splash {
   /* Set rules to fill background */
   background: url("/../res/Optimized-background.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -7,19 +7,46 @@ html {
   background-size: cover;
   width: 100%;
   height: 100%;
-
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  z-index: 0;
 }
 
 #status{
   margin: 20% auto;
   text-align: center;
+  z-index: 0;
 }
 
 #fb{
-  width: 300px
+  width: 300px;
 }
 
 ._4z_f {
   text-align: center;
   width: 400px;
+}
+
+.page{
+  width: 100%;
+  height: 100%;
+}
+
+#search{
+  background-color: whitesmoke;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+.sidebar{
+  width: 30%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: orange;
 }
