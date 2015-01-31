@@ -1,5 +1,6 @@
 #bg {
   /* Set rules to fill background */
+  background-image: url("res/Optimized-background.jpg");
   min-height: 100%;
   min-width: 1024px;
   
@@ -12,11 +13,11 @@
   top: -200px;
   left: 0;
 
-  -webkit-filter: blur(20px);
+/*  -webkit-filter: blur(20px);
   -moz-filter: blur(20px);
   -o-filter: blur(20px);
   -ms-filter: blur(20px);
-  filter: blur(20px);
+  filter: blur(20px);*/
   opacity: 0.8;
 
 }
