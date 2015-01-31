@@ -113,14 +113,27 @@
       <div id="status">
         <!---->
 
-        <fb:login-button size="xlarge" scope="public_profile" onlogin="checkLoginState();">Login with Facebook</fb:login-button>
+        <fb:login-button id="fb" size="xlarge" scope="public_profile" onlogin="checkLoginState();">Login with Facebook</fb:login-button>
       </div>
     </div>
 
     
 
     <div class="page" id="search">
-      <div class="sidebar"></div>
+      <div class="header"></div>
+
+      <div class="sidebar">
+        <table class="sidebar-table">
+          <tr class="sidebar-item">
+            <td>
+              <input class="ingredient-search" type="text" placeholder="ENTER INGREDIENT">
+            </td>
+            <td class="sidebar-item-icon">
+              <div class="sidebar-item-icon-image"></div>
+            </td> 
+          </tr>
+        </table>
+      </div>
       <div class="content"></div>
     </div>
     

@@ -3,8 +3,10 @@ function populateSearch(profileData){
 }
 
 function fadeToSearch(){
-  $("#splash").fadeOut(2000)
-  $("#search").fadeIn(2000)
+  $("#splash").fadeOut(1000)
+  $("#search").fadeIn(1000, function(){
+  })
+
 
   // $(".splash").css("background", "#E1E3D7")
 
