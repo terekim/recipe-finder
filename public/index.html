@@ -2,6 +2,7 @@
   <head>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="js/main.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
   </head>
   <body>
   <div id="fb-root"></div>
@@ -17,10 +18,11 @@
       // for FB.getLoginStatus().
       if (response.status === 'connected') {
         // Logged into your app and Facebook.
-        var test = FB.api('/me', function(response) {
+        var fbProfile = FB.api('/me', function(response) {
             console.log(JSON.stringify(response));
         });
-        console.log(test);
+        console.log(fbProfile);
+        transitionToSearch(fbProfile);
         // TRANSITION TO NEXT PAGE HERE ********************************************************
 
 
@@ -41,9 +43,7 @@
     // Button.  See the onlogin handler attached to it in the sample
     // code below.
     function checkLoginState() {
-      debugger;
       FB.getLoginStatus(function(response) {
-        debugger;
         statusChangeCallback(response);
       });
     }
@@ -88,7 +88,6 @@
       FB.login(function(response) {
         if (response.status === 'connected') {
           // Logged into your app and Facebook.
-          debugger;
         } else if (response.status === 'not_authorized') {
           // The person is logged into Facebook, but not your app.
         } else {
@@ -116,12 +115,9 @@
     <div id="status">
       <!---->
 
-      <fb:login-button size="xlarge"
-                 onlogin="checkLoginState();">
-  Login with Facebook
-</fb:login-button>
-      </div>
+      <fb:login-button size="xlarge" onlogin="checkLoginState();">Login with Facebook</fb:login-button>
     </div>
+    
   </body>
 </html>
 
