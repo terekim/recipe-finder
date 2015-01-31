@@ -113,6 +113,10 @@ table {
   width: 100%;
   height: 50px;
 }
+
+.sidebar-item-label{
+  vertical-align: middle;
+}
 .sidebar-item-icon{
   width: 50px;
   height: 50px;
@@ -120,10 +124,20 @@ table {
   vertical-align: middle;
 }
 
-.sidebar-item-icon-image{
+.sidebar-item-icon-add-image{
   background: url(../res/plus.svg) center transparent no-repeat;
   width: 50px;
   height: 50px;
+}
+
+.sidebar-item-icon-remove-image{
+  background: url(../res/plus.svg) center transparent no-repeat;
+  width: 50px;
+  height: 50px;
+  moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 ol{

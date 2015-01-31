@@ -1,3 +1,4 @@
+
 function populateSearch(profileData){
 
 }
@@ -30,3 +31,24 @@ function transitionToSearch(fbProfile) {
   populateSearch(profileData); //this needs to be in .done callback
   fadeToSearch();
 }
+
+
+function setupEventBindings(){
+  $(".sidebar-item-icon").click(function(){
+    var newIngredient = $(".ingredient-search").val()
+    var startString = " <tr class=\"sidebar-item\"><td class=\"sidebar-item-label\"> "
+    var endString = " </td><td class=\"sidebar-item-icon\"><div class=\"sidebar-item-icon-remove-image\"></div></td></tr>"
+    var newSidebarListItem = startString + newIngredient + endString;
+    $(newSidebarListItem).appendTo('.sidebar-table');
+  });
+}
+
+
+$(document).ready(function() {
+  setupEventBindings();
+});
+
+
+
+
+
