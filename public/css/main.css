@@ -1,23 +1,20 @@
-#bg {
+html {
   /* Set rules to fill background */
-  background-image: url("res/Optimized-background.jpg");
-  min-height: 100%;
-  min-width: 1024px;
-  
-  /* Set up proportionate scaling */
+  background: url("/../res/Optimized-background.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   width: 100%;
-  height: auto;
-  
-  /* Set up positioning */
-  position: fixed;
-  top: -200px;
-  left: 0;
+  height: 100%;
 
-/*  -webkit-filter: blur(20px);
-  -moz-filter: blur(20px);
-  -o-filter: blur(20px);
-  -ms-filter: blur(20px);
-  filter: blur(20px);*/
-  opacity: 0.8;
+}
 
+#status{
+  margin: 20% auto;
+  text-align: center;
+}
+
+#fb{
+  width: 300px
 }
