@@ -58,9 +58,14 @@ function setupEventBindings(){
   
 }
 
+function calcSidebarTableHeight(){
+  var height = $(".sidebar").height() - $(".search-recipe").height();
+  $(".sidebar-table").css("max-height", height+"px");
+}
 
 $(document).ready(function() {
   setupEventBindings();
+//  calcSidebarTableHeight();
 });
 
 
