@@ -49,6 +49,9 @@ function transitionToSearch(fbProfile) {
     //     "dishName": "Chicken Steak"
     //   }]
     // };
+    if (recipeFinderUserData.dishes === 0){
+      displayFirstTimeMsg();
+    }
     console.log(msg);
   });
 
@@ -57,7 +60,9 @@ function transitionToSearch(fbProfile) {
   fadeToSearch();
 }
 
-
+function displayFirstTimeMsg(){
+  
+}
 
 function setIngredientRemoveBinding(ingredientItem){
   var ingredientIcon = ingredientItem.children(".ingredient-item-icon")[0]
