@@ -69,12 +69,17 @@ function setIngredientRemoveBinding(ingredientItem){
 
 function searchRecipe(){
   var newIngredient = $(".ingredient-search").val()
-  var startString = " <tr class=\"ingredient-item\"><td class=\"ingredient-item-label\"> "
-  var endString = " </td><td class=\"ingredient-item-icon\"><div class=\"ingredient-item-icon-image\"></div></td></tr>"
-  var newSidebarListItem = startString + newIngredient + endString;
-  var x = $(newSidebarListItem).appendTo('.sidebar-table');
-  setIngredientRemoveBinding(x);
-  $(".ingredient-search").val('');
+  if(newIngredient === ''){
+    swal({   title: "Error!",   text: "Enter an ingredient!",   type: "error",   confirmButtonText: "Cool" });
+  }
+  else{
+    var startString = " <tr class=\"ingredient-item\"><td class=\"ingredient-item-label\"> "
+    var endString = " </td><td class=\"ingredient-item-icon\"><div class=\"ingredient-item-icon-image\"></div></td></tr>"
+    var newSidebarListItem = startString + newIngredient + endString;
+    var x = $(newSidebarListItem).appendTo('.sidebar-table');
+    setIngredientRemoveBinding(x);
+    $(".ingredient-search").val('');
+  }
 }
 
 function setupEventBindings(){
