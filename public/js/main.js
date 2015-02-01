@@ -18,29 +18,42 @@ function transitionToSearch(fbProfile) {
   var firstName = fbProfile.first_name;
   var lastName = fbProfile.last_name;
   var profileData = { id: id, firstname: firstName, lastname: lastName };
-  // $.ajax({
-  //   type: "GET",
-  //   url: 'http://localhost:3000/api',
-  //   data: profileData
-  // })
-  // .done(function( msg ) {
-  //   var recipeFinderUserData = msg
-  //   alert( "Data Retrieved: " + msg );
-  // });
+  $.ajax({
+    type: "GET",
+    url: 'http://localhost:3000/api',
+    data: profileData
+  })
+  .done(function( msg ) {
+    var recipeFinderUserData = msg
+    alert( "Data Retrieved: " + msg );
+  });
   console.log("AJAX REQUEST SENT TO LOCALHOST:3000");
   populateSearch(profileData); //this needs to be in .done callback
   fadeToSearch();
 }
 
 
-function setupEventBindings(){
-  $(".sidebar-item-icon").click(function(){
-    var newIngredient = $(".ingredient-search").val()
-    var startString = " <tr class=\"sidebar-item\"><td class=\"sidebar-item-label\"> "
-    var endString = " </td><td class=\"sidebar-item-icon\"><div class=\"sidebar-item-icon-remove-image\"></div></td></tr>"
-    var newSidebarListItem = startString + newIngredient + endString;
-    $(newSidebarListItem).appendTo('.sidebar-table');
+
+function setIngredientRemoveBinding(ingredientItem){
+  var ingredientIcon = ingredientItem.children(".ingredient-item-icon")[0]
+  $(ingredientIcon).click(function(){
+    this.parentElement.remove()
+    //INCLUDE REMOVE ANIMATION HERE *****************************************************************************
   });
+}
+
+
+function setupEventBindings(){
+  $(".search-item-icon").click(function(){
+    var newIngredient = $(".ingredient-search").val()
+    var startString = " <tr class=\"ingredient-item\"><td class=\"ingredient-item-label\"> "
+    var endString = " </td><td class=\"ingredient-item-icon\"><div class=\"ingredient-item-icon-image\"></div></td></tr>"
+    var newSidebarListItem = startString + newIngredient + endString;
+    var x = $(newSidebarListItem).appendTo('.sidebar-table');
+    setIngredientRemoveBinding(x)
+  });
+
+  
 }
 
 
