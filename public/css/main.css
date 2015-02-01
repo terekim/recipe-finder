@@ -94,6 +94,7 @@ table {
   top: 50px;
   background-color: white;
   overflow-y:auto;
+  overflow-x: hidden;
 }
 
 .header{
