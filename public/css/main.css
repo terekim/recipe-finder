@@ -167,9 +167,11 @@ table {
 }
 
 .search-recipe{
-  width: 100%;
+  width: inherit;
   height: 50px;
   background-color: seagreen;
+  position:fixed;
+  bottom:0;
 }
 
 .search-recipe-element{
