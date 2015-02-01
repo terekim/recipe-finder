@@ -60,6 +60,7 @@ function setupEventBindings(){
 
 function calcSidebarTableHeight(){
   var height = $(".sidebar").height() - $(".search-recipe").height();
+  $(".sidebar").css("max-height", height+"px");
   $(".sidebar-table").css("max-height", height+"px");
 }
 
