@@ -4,18 +4,36 @@ var mongoConnection = require('./mongoConnection');
 
 
 exports.updateUser = function(req, res) {
-	var user = req.body
+	var user = {};
+	user._id = req.body.id;
+	user.firstname = req.body.firstname;
+	user.lastname = req.body.lastname;
+	
 	console.log(user);
 
 	db.updateUser(user, function() {
-		res.send("updated");
-	})
-	// var first_name = req[0].firstname;
-	// var last_name = req[0].lastname;
-	// var fb_id = req[0].id;
-
-
-
+		var dishes = {
+			"dishes": 5,
+			"dishList": [
+			  { "id": 1,
+				"dishName": "Buffalo Pulled Chicken Breast"
+			},
+			  { "id": 2,
+				"dishName": "Barbeque Chicken"
+			},
+			  { "id": 3,
+				"dishName": "Roasted Barbeque Chicken"
+			},
+			  { "id": 4,
+				"dishName": "Chicken Tenders"
+			},
+			  { "id": 5,
+				"dishName": "Chicken Steak"
+			}]
+		};
+		res.send(dishes);
+		// db.getDishes()
+	});
 }
 
 //Adds a dish to the DB
