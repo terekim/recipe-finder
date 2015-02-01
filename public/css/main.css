@@ -17,6 +17,8 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  font-family:'Oxygen', sans-serif;
+  letter-spacing: 2px;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -106,6 +108,7 @@ table {
   width: 100%;
   height: 50px;
   border: none;
+  padding-left: 10px;
 }
 
 .sidebar-table-wrapper{
@@ -165,6 +168,7 @@ table {
 
 .ingredient-item-label{
   vertical-align: middle;
+  padding-left:10px;
 }
 
 .ingredient-item-icon{
