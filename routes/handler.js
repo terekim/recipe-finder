@@ -4,7 +4,11 @@ var mongoConnection = require('./mongoConnection');
 
 
 exports.updateUser = function(req, res) {
-	var user = req.body
+	var user = {};
+	user._id = req.body.id;
+	user.firstname = req.body.firstname;
+	user.lastname = req.body.lastname;
+	
 	console.log(user);
 
 	db.updateUser(user, function() {

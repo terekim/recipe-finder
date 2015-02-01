@@ -28,6 +28,10 @@ exports.updateDish = function (callback) {
 	connectMongo(dishesColl, callback);
 };
 
+exports.getDishesById = function (callback) {
+	connectMongo(dishesColl, callback);
+};
+
 var connectMongo = function(collName, callback){
     mongo.connect(url, function(err, conn){
         conn.collection(collName, function(err, collection){
