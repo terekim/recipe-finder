@@ -26,7 +26,7 @@ function transitionToSearch(fbProfile) {
   })
   .done(function( msg ) {
     var recipeFinderUserData = msg
-    alert( "Data Retrieved: " + msg );
+/*    alert( "Data Retrieved: " + msg );*/
   });
 
   console.log("AJAX REQUEST SENT TO LOCALHOST:3000");
@@ -44,29 +44,38 @@ function setIngredientRemoveBinding(ingredientItem){
   });
 }
 
+function searchRecipe(){
+  var newIngredient = $(".ingredient-search").val()
+  var startString = " <tr class=\"ingredient-item\"><td class=\"ingredient-item-label\"> "
+  var endString = " </td><td class=\"ingredient-item-icon\"><div class=\"ingredient-item-icon-image\"></div></td></tr>"
+  var newSidebarListItem = startString + newIngredient + endString;
+  var x = $(newSidebarListItem).appendTo('.sidebar-table');
+  setIngredientRemoveBinding(x);
+  $(".ingredient-search").val('');
+}
 
 function setupEventBindings(){
   $(".search-item-icon").click(function(){
-    var newIngredient = $(".ingredient-search").val()
-    var startString = " <tr class=\"ingredient-item\"><td class=\"ingredient-item-label\"> "
-    var endString = " </td><td class=\"ingredient-item-icon\"><div class=\"ingredient-item-icon-image\"></div></td></tr>"
-    var newSidebarListItem = startString + newIngredient + endString;
-    var x = $(newSidebarListItem).appendTo('.sidebar-table');
-    setIngredientRemoveBinding(x)
+    searchRecipe();
   });
 
-  
+  $(".ingredient-search").keypress(function (e) {
+    var key = e.which;
+    if(key == 13)  // the enter key code
+    {
+      searchRecipe();
+    }
+  });   
 }
 
 function calcSidebarTableHeight(){
-  var height = $(".sidebar").height() - $(".search-recipe").height();
-  $(".sidebar").css("max-height", height+"px");
-  $(".sidebar-table").css("max-height", height+"px");
+  var height = $(".page").height() - $(".header").height() - $(".search-recipe").height() -50;
+  $(".sidebar-table-wrapper").css("height", height+"px");
 }
 
 $(document).ready(function() {
   setupEventBindings();
-//  calcSidebarTableHeight();
+  calcSidebarTableHeight();
 });
 
 
