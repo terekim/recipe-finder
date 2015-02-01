@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
+  overflow:hidden;
 }
 ol, ul {
   list-style: none;
@@ -92,6 +93,8 @@ table {
   left: 0px;
   top: 50px;
   background-color: white;
+  overflow-y:auto;
+  overflow-x: hidden;
 }
 
 .header{
@@ -108,6 +111,7 @@ table {
 
 .sidebar-table{
   width: 100%;
+  overflow-y: scroll;
 }
 .search{
   width: 100%;
