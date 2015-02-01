@@ -26,7 +26,31 @@ function transitionToSearch(fbProfile) {
   })
   .done(function( msg ) {
     var recipeFinderUserData = msg
-    alert( "Data Retrieved: " + msg );
+
+
+    // Returns a list of dishes if the user had previous logged in already
+    // Format:
+    // var dishes = {
+    //   "dishes": 5,
+    //   "dishList": [
+    //     { "id": 1,
+    //     "dishName": "Buffalo Pulled Chicken Breast"
+    //   },
+    //     { "id": 2,
+    //     "dishName": "Barbeque Chicken"
+    //   },
+    //     { "id": 3,
+    //     "dishName": "Roasted Barbeque Chicken"
+    //   },
+    //     { "id": 4,
+    //     "dishName": "Chicken Tenders"
+    //   },
+    //     { "id": 5,
+    //     "dishName": "Chicken Steak"
+    //   }]
+    // };
+    console.log(msg);
+    // alert( "Data Retrieved: " + msg );
   });
 
   console.log("AJAX REQUEST SENT TO LOCALHOST:3000");
