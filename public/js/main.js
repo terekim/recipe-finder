@@ -18,15 +18,15 @@ function transitionToSearch(fbProfile) {
   var firstName = fbProfile.first_name;
   var lastName = fbProfile.last_name;
   var profileData = { id: id, firstname: firstName, lastname: lastName };
-  // $.ajax({
-  //   type: "GET",
-  //   url: 'http://localhost:3000/api',
-  //   data: profileData
-  // })
-  // .done(function( msg ) {
-  //   var recipeFinderUserData = msg
-  //   alert( "Data Retrieved: " + msg );
-  // });
+  $.ajax({
+    type: "POST",
+    url: 'http://localhost:3000/api/user',
+    data: profileData
+  })
+  .done(function( msg ) {
+    var recipeFinderUserData = msg
+    alert( "Data Retrieved: " + msg );
+  });
   console.log("AJAX REQUEST SENT TO LOCALHOST:3000");
   populateSearch(profileData); //this needs to be in .done callback
   fadeToSearch();
