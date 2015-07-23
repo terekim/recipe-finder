@@ -45,15 +45,12 @@ app.get('/', function (req, res) {
   res.redirect('/index.html');
 });
 
-app.post('/api/user', handler.updateUser);
+app.post('/api/v1/user', handler.updateUser);
 //  {
-
 // 	var firstname = req.body;
 // 	console.log(firstname);
 // });
 
+app.post('/api/v1/searchRecipes', handler.searchRecipe);
+
 app.listen(3000);
-
-
-
-	//

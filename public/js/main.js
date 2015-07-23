@@ -1,18 +1,25 @@
+var ingredientList = [];
 
 function populateSearch(profileData){
+  var obj = profileData;
+  console.log(obj.dishList);
 
+  for (var i=0; i < obj.dishes; i++) {
+    var startString = " <tr class=\"dish-item\"><td class=\"dish-item-label\"> "
+    var endString = " </td><td class=\"dish-item-icon\"><div class=\"dish-item-icon-image\"></div></td></tr>"
+    var newSidebarListItem = startString + obj.dishList[i].dishName + endString;
+    console.log(newSidebarListItem);
+    var x = $(newSidebarListItem).appendTo('.dishes-table');
+  }
 }
 
 function fadeToSearch(){
   $("#splash").fadeOut(1000)
   $("#search").fadeIn(1000, function(){
   })
-
-
   // $(".splash").css("background", "#E1E3D7")
-
-
 }
+
 function transitionToSearch(fbProfile) {
   var id = fbProfile.id;
   var firstName = fbProfile.first_name;
@@ -21,7 +28,7 @@ function transitionToSearch(fbProfile) {
 
   $.ajax({
     type: "POST",
-    url: 'http://localhost:3000/api/user',
+    url: 'http://localhost:3000/api/v1/user',
     data: profileData
   })
   .done(function( msg ) {
@@ -56,28 +63,29 @@ function transitionToSearch(fbProfile) {
   });
 
   console.log("AJAX REQUEST SENT TO LOCALHOST:3000");
-  populateSearch(profileData); //this needs to be in .done callback
+  // populateSearch(profileData); //this needs to be in .done callback
   fadeToSearch();
 }
 
 function displayFirstTimeMsg(){
-  
 }
 
 function setIngredientRemoveBinding(ingredientItem){
   var ingredientIcon = ingredientItem.children(".ingredient-item-icon")[0]
   $(ingredientIcon).click(function(){
-    this.parentElement.remove()
+    this.parentElement.remove();
+    ingredientList.pop(ingredientIcon.innerHTML);
     //INCLUDE REMOVE ANIMATION HERE *****************************************************************************
   });
 }
 
-function searchRecipe(){
-  var newIngredient = $(".ingredient-search").val()
+function addIngredient(){
+  var newIngredient = $(".ingredient-search").val();
+
   if(newIngredient === ''){
     swal({   title: "Error!",   text: "Enter an ingredient!",   type: "error",   confirmButtonText: "Cool" });
-  }
-  else{
+  }else{
+    ingredientList.push(newIngredient.toLowerCase());
     var startString = " <tr class=\"ingredient-item\"><td class=\"ingredient-item-label\"> "
     var endString = " </td><td class=\"ingredient-item-icon\"><div class=\"ingredient-item-icon-image\"></div></td></tr>"
     var newSidebarListItem = startString + newIngredient + endString;
@@ -89,16 +97,16 @@ function searchRecipe(){
 
 function setupEventBindings(){
   $(".search-item-icon").click(function(){
-    searchRecipe();
+    addIngredient();
   });
 
   $(".ingredient-search").keypress(function (e) {
     var key = e.which;
     if(key == 13)  // the enter key code
     {
-      searchRecipe();
+      addIngredient();
     }
-  });   
+  });
 }
 
 function calcSidebarTableHeight(){
@@ -106,12 +114,32 @@ function calcSidebarTableHeight(){
   $(".sidebar-table-wrapper").css("height", height+"px");
 }
 
+function searchRecipes(){
+  $(".search-recipe").click(function(){
+    var rButton_anyOrAll = 1;
+    var ingredientSearch = { ingredients: ingredientList, anyOrAll: rButton_anyOrAll};
+    $.ajax({
+      type: "POST",
+      url: 'http://localhost:3000/api/v1/searchRecipes',
+      dataType: 'json',
+      data: ingredientSearch
+    }).done(function(msg) {
+      var newRecipes = msg;
+
+      // The return message from backend is 0 (check of number of dishes done in backend)
+      if (newRecipes == 0) {
+        swal({   title: "Error!",   text: "Sorry, there are no recipes!",   type: "error",   confirmButtonText: "Okay" });
+      } else {
+        $(".content").replaceWith(''); //clear "Enter your ingredients and find a recipe!"
+        populateSearch(newRecipes);
+      }
+    });
+  });
+}
+
 $(document).ready(function() {
   setupEventBindings();
   calcSidebarTableHeight();
+  searchRecipes();
 });
-
-
-
-
 

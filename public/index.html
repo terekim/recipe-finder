@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/sweet-alert.js"></script> 
+    <script src="js/sweet-alert.js"></script>
     <link rel="stylesheet" type="text/css" href="css/sweet-alert.css">
     <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
   </head>
@@ -15,7 +15,7 @@
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
       console.log(response);
-      
+
       // The response object is returned with a status field that lets the
       // app know the current login status of the person.
       // Full docs on the response object can be found in the documentation
@@ -26,7 +26,7 @@
             console.log(JSON.stringify(response));
             transitionToSearch(response);
         });
-        
+
         // TRANSITION TO NEXT PAGE HERE ********************************************************
 
 
@@ -52,7 +52,7 @@
       });
     }
 
-    // Now that we've initialized the JavaScript SDK, we call 
+    // Now that we've initialized the JavaScript SDK, we call
     // FB.getLoginStatus().  This function gets the state of the
     // person visiting this page and can return one of three states to
     // the callback you provide.  They can be:
@@ -121,12 +121,13 @@
       </div>
     </div>
 
-    
+
 
     <div class="page" id="search">
       <div class="header">
           <img src="img/search.png" height="52px;" width="52px;" style="margin-left:5px;">
           <img src="img/heart-icon.png" height="25px;" width="25px;" style="position:absolute; top:13px; margin-left:15px">
+          <h3 class="title"> Chef Fridge</h3>
       </div>
       <div class="sidebar">
         <table class="search-table">
@@ -136,12 +137,11 @@
             </td>
             <td class="search-item-icon">
               <div class="search-item-icon-image"></div>
-            </td> 
+            </td>
           </tr>
         </table>
         <div class="sidebar-table-wrapper">
           <table class="sidebar-table">
-
           </table>
         </div>
         <table class="search-recipe">
@@ -153,11 +153,14 @@
         </table>
       </div>
 
-      <div class="content">
-        Enter your ingredients and find a recipe!
-      </div>
+      <div class="populatedDishes">
+        <table class="dishes-table">
+        </table>
+        <div class="content">
+          Enter your ingredients and find a recipe!
+        </div>
     </div>
-    
+
   </body>
 </html>
 

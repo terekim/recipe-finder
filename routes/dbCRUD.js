@@ -1,7 +1,7 @@
 var mongoConnection = require('./mongoConnection');
 
 exports.updateUser = function (user_info, callback) {
-	mongoConnection.updateUser(function(usersColl) { 
+	mongoConnection.updateUser(function(usersColl) {
 		usersColl.update({_id: user_info._id}, { firstname: user_info.firstname, lastname: user_info.lastname}, {upsert: true}, callback);
 	});
 };
